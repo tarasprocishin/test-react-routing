@@ -37,9 +37,8 @@ export const Reviews = () => {
 
       <ul className="reviews">
         {reviews.map(review => (
-          <li>
+          <li key={review.id}>
             <Link
-              key={review.id}
               to={{
                 pathname: path + "/:" + review.id,
                 state: {
@@ -55,7 +54,11 @@ export const Reviews = () => {
       </ul>
       <Switch>
         {reviews.map(review => (
-          <Route path={path + "/:" + review.id} component={ReviewItem} />
+          <Route
+            key={review.id}
+            path={path + "/:" + review.id}
+            component={ReviewItem}
+          />
         ))}
       </Switch>
     </div>
